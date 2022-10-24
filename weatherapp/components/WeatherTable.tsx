@@ -13,6 +13,7 @@ export default function WeatherTable({
   if (!weatherData || !currentLocation) return null
 
   return (
+    
     <section className="weather-table" data-testid="weather-table">
       <h2>Oversikt</h2>
       <ul>
