@@ -12,7 +12,10 @@ export default async function handler(
           questions: true,
         },
       })
-      return res.status(200).json({ status: true, data: polls })
+      return res
+        .status(200)
+        .json({ status: true, data: polls })
+    
     case 'post':
       const data = req.body
       if (!data.title)
@@ -21,11 +24,16 @@ export default async function handler(
           .json({ status: false, error: 'Title is required' })
 
       const poll = await prisma.poll.create({ data })
-      return res.status(201).json({ status: true, data: poll })
+      return res
+        .status(201)
+        .json({ status: true, data: poll })
+    
     default:
-      return res.status(400).json({
-        success: false,
-        error: 'Method not allowed',
+      return res
+        .status(400)
+        .json({
+          success: false,
+          error: 'Method not allowed',
       })
   }
 }
